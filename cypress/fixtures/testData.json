@@ -4,5 +4,6 @@
   "incorrectEmail": "johndoegmail.com",
   "email": "johndoe@gmail.com",
   "comments": "Some text to fill comment fields",
-  "firstDropdownText": "['JAVA', 'C#', 'Python', 'SQL']"
+  "firstDropdownText": "['JAVA', 'C#', 'Python', 'SQL']",
+  "autocompleteValue": "Chips"
 }
