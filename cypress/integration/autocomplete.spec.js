@@ -1,4 +1,4 @@
-describe('Contact Us page - automation', function() {
+describe('Autocomplete field - automation', function() {
     let testData;
 
 beforeEach(() => {
