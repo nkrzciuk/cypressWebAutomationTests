@@ -1,4 +1,5 @@
 {
     "baseUrl": "http://webdriveruniversity.com/",
-    "projectId": "4u9vk2"
+    "projectId": "4u9vk2",
+    "chromeWebSecurity": false
 }

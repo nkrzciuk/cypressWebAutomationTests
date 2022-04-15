@@ -5,5 +5,7 @@
   "email": "johndoe@gmail.com",
   "comments": "Some text to fill comment fields",
   "firstDropdownText": "['JAVA', 'C#', 'Python', 'SQL']",
-  "autocompleteValue": "Chips"
+  "autocompleteValue": "Chips",
+  "shoesItemTitleResult": "New Ladies High Wedge Heel Toe Thong Diamante Flip Flop Sandals",
+  "emptyShoppingCartMsg": "Your shopping cart is empty!"
 }
