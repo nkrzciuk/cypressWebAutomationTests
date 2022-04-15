@@ -6,6 +6,12 @@
   "comments": "Some text to fill comment fields",
   "firstDropdownText": "['JAVA', 'C#', 'Python', 'SQL']",
   "autocompleteValue": "Chips",
-  "shoesItemTitleResult": "New Ladies High Wedge Heel Toe Thong Diamante Flip Flop Sandals",
-  "emptyShoppingCartMsg": "Your shopping cart is empty!"
+  "emptyShoppingCartMsg": "Your shopping cart is empty!",
+  "cosmeticNameSearch": "shampoo",
+  "address": "Street XY 23",
+  "country": "Poland",
+  "region": "Mazowieckie",
+  "postCode": "05-510",
+  "city": "Big City",
+  "successfullOrderMsg": " Your Order Has Been Processed!"
 }
