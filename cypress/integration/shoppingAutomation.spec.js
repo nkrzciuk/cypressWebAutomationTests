@@ -21,7 +21,10 @@ function chooseCategoryAndAddItemToCart (category, items, size) {
     cy.get(shopping.productCart).first().invoke('text').then( itemText => {
         cy.get(shopping.productCart).first().click()
         cy.get(shopping.productName).find('span').should('have.text', itemText)
-        cy.get(shopping.itemForm).find('select').select(size)
+        cy.get(shopping.itemForm).find('select').children().then(($options) => {
+  const randomOption = Math.floor(Math.random() * $options.length);
+  cy.get(shopping.itemForm).find('select').select(`${$options[randomOption].textContent.trim()}`)
+        })
         cy.contains(shopping.addToCartButtonText).click()
         cy.contains(testData.emptyShoppingCartMsg).should('not.exist')
         cy.get('a').contains(itemText)
@@ -34,7 +37,6 @@ function searchForTheProductAndAddItemToCart (productName) {
     cy.get(shopping.productCart).first().invoke('text').then( itemText => {
         cy.get(shopping.productCart).first().click()
         cy.get(shopping.productName).find('span').should('have.text', itemText)
-        // cy.get(shopping.itemForm).find('select').select(size)
         cy.contains(shopping.addToCartButtonText).click()
         cy.contains(testData.emptyShoppingCartMsg).should('not.exist')
         cy.get('a').contains(itemText)
@@ -53,8 +55,8 @@ function fillClientDataToCompleteOrder (name, lastname, email, address, country,
 }
 
 it ('Add items to cart and finalize order', function(){
-    chooseCategoryAndAddItemToCart("Apparel & accessories", "Shoes", "39");
-    chooseCategoryAndAddItemToCart("Apparel & accessories", "T-shirts", "Large");
+    chooseCategoryAndAddItemToCart("Apparel & accessories", "Shoes");
+    chooseCategoryAndAddItemToCart("Apparel & accessories", "T-shirts");
     searchForTheProductAndAddItemToCart(testData.cosmeticNameSearch);
     cy.get(shopping.goToCheckout).click()
     cy.get('[type="radio"]').check('guest')
