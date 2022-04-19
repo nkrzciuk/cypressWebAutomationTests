@@ -14,12 +14,12 @@ this.beforeAll(() => {
     })
 })
 
-function chooseCategoryAndAddItemToCart (category, items, size) {
+function chooseCategoryAndAddItemToCart (category, items, position) {
     cy.get(shopping.navMenu).contains(category).click()
     cy.contains(items, {force: true}).click({force: true})
     cy.get(shopping.sortItems).select("Date New > Old")
-    cy.get(shopping.productCart).first().invoke('text').then( itemText => {
-        cy.get(shopping.productCart).first().click()
+    cy.get(shopping.productCart).eq(position).invoke('text').then( itemText => {
+        cy.get(shopping.productCart).eq(position).click()
         cy.get(shopping.productName).find('span').should('have.text', itemText)
         cy.get(shopping.itemForm).find('select').children().then(($options) => {
   const randomOption = Math.floor(Math.random() * $options.length);
@@ -55,8 +55,8 @@ function fillClientDataToCompleteOrder (name, lastname, email, address, country,
 }
 
 it ('Add items to cart and finalize order', function(){
-    chooseCategoryAndAddItemToCart("Apparel & accessories", "Shoes");
-    chooseCategoryAndAddItemToCart("Apparel & accessories", "T-shirts");
+    chooseCategoryAndAddItemToCart("Apparel & accessories", "Shoes", 0);
+    chooseCategoryAndAddItemToCart("Apparel & accessories", "T-shirts", 1);
     searchForTheProductAndAddItemToCart(testData.cosmeticNameSearch);
     cy.get(shopping.goToCheckout).click()
     cy.get('[type="radio"]').check('guest')
