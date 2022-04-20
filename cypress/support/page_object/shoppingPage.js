@@ -17,7 +17,9 @@ const shopping = {
     continueButton: '[title="Continue"]',
     confirmOrderButton: '[id=checkout_btn]',
     orderConfirmationMsg: 'span[class="maintext"]',
-    goToCheckout: '[id=cart_checkout1]'
+    goToCheckout: '[id=cart_checkout1]',
+    cartTotal: '[class="cart_total"',
+    productPrice: '[class="productfilneprice"'
 
 }
 export { shopping };
