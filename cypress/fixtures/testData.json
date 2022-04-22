@@ -1,8 +1,12 @@
 {
   "firstName": "John",
   "lastName": "Doe",
+  "username": "John123",
   "incorrectEmail": "johndoegmail.com",
+  "updatedEmail": "john999@gmail.com",
   "email": "johndoe@gmail.com",
+  "userPassword": "pet123",
+  "userPhone": "642193839",
   "comments": "Some text to fill comment fields",
   "firstDropdownText": "['JAVA', 'C#', 'Python', 'SQL']",
   "autocompleteValue": "Chips",
