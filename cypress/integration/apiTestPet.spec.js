@@ -1,6 +1,6 @@
 describe('API testing PETS', function() {
     let testData;
-    const petStoreURL = "https://petstore.swagger.io/v2/pet/"
+    const petStoreURL = 'https://petstore.swagger.io/v2/pet/'
 
 this.beforeAll(() => {
     cy.fixture('testData').then(function (data) {
@@ -11,8 +11,14 @@ this.beforeAll(() => {
 
 
 it ('Add new Pet to the store', function(){
-    cy.request('POST', petStoreURL, { name: testData.dog1Name, "photoUrls": [
-        "imageURL"]}).then(
+    cy.request({
+        method: 'POST',
+        url: petStoreURL,
+        body: {
+            name: testData.dog1Name,
+            photoUrls: ['imageURL']
+        }
+        }).then(
         (response) => {
           expect(response.status).to.eq(200)
           expect(response.body).to.have.property('name', testData.dog1Name)
@@ -20,15 +26,28 @@ it ('Add new Pet to the store', function(){
 })
 
 it ('Update existing pet in the store', function(){
-    cy.request('POST', petStoreURL, { name: testData.dog1Name, photoUrls: [
-        "imageURL"], id: testData.dogID}).then(
+    cy.request({
+        method: 'POST',
+        url: petStoreURL,
+        body: {
+            name: testData.dog1Name,
+            photoUrls: ['imageURL'],
+            id: testData.dogID
+        }
+    }).then(
         (response) => {
           expect(response.status).to.eq(200)
           expect(response.body).to.have.property('id', testData.dogID)
           expect(response.body).to.have.property('name', testData.dog1Name)
-          cy.request('PUT', petStoreURL, { id: response.body.id,
-           name: testData.dog2Name, photoUrls: [
-        "string"]}).then(
+          cy.request({
+              method: 'PUT',
+              url: petStoreURL,
+              body: {
+                  id: response.body.id,
+                  name: testData.dog2Name,
+                  photoUrls: ['imageURL']
+              }
+                }).then(
         (updatedResponse) => {
             expect(updatedResponse.status).to.eq(200)
             expect(updatedResponse.body).to.have.property('id', response.body.id)
@@ -38,13 +57,24 @@ it ('Update existing pet in the store', function(){
 })
 
 it ('Find pet by id', function(){
-    cy.request('POST', petStoreURL, { name: testData.dog1Name, photoUrls: [
-        "imageURL"], id: testData.dogID}).then(
+    cy.request({
+        method: 'POST',
+        url: petStoreURL,
+        body: {
+            name: testData.dog1Name,
+            photoUrls: ['imageURL'],
+            id: testData.dogID
+        }
+        }).then(
         (response) => {
           expect(response.status).to.eq(200)
           expect(response.body).to.have.property('name', testData.dog1Name)
           const responseID = response.body.id
-          cy.request('GET', petStoreURL + responseID, {}).then(
+          cy.request({
+              method: 'GET',
+              url: petStoreURL + responseID,
+              body: {}
+            }).then(
         (updatedResponse) => {
             expect(updatedResponse.status).to.eq(200)
             expect(updatedResponse.body).to.have.property('id', responseID)
@@ -54,13 +84,25 @@ it ('Find pet by id', function(){
 })
 
 it ('Find pet by status', function(){
-    cy.request('POST', petStoreURL, { name: testData.dog1Name, photoUrls: [
-        "imageURL"], id: testData.dogID, status: "sold"}).then(
+    cy.request({
+        method: 'POST',
+        url: petStoreURL,
+        body: {
+            name: testData.dog1Name,
+            photoUrls: ['imageURL'],
+            id: testData.dogID,
+            status: 'sold'
+        }
+        }).then(
         (response) => {
           expect(response.status).to.eq(200)
           expect(response.body).to.have.property('id', testData.dogID)
           expect(response.body).to.have.property('name', testData.dog1Name)
-          cy.request('GET', petStoreURL + 'findByStatus?status=' + response.body.status, {}).then(
+          cy.request({
+              method: 'GET',
+              url: petStoreURL + 'findByStatus?status=' + response.body.status,
+              body: {}
+            }).then(
         (updatedResponse) => {
             expect(updatedResponse.status).to.eq(200)
             expect(response.body).to.not.be.null
@@ -69,14 +111,25 @@ it ('Find pet by status', function(){
         })
     })
 it ('Delete pet by ID', function(){
-    cy.request('POST', petStoreURL, { name: testData.dog1Name, photoUrls: [
-        "imageURL"], id: testData.dogID}).then(
+    cy.request({
+        method: 'POST',
+        url: petStoreURL,
+        body: {
+            name: testData.dog1Name,
+            photoUrls: ['imageURL'],
+            id: testData.dogID
+        }
+        }).then(
         (response) => {
           expect(response.status).to.eq(200)
           expect(response.body).to.have.property('id', testData.dogID)
           expect(response.body).to.have.property('name', testData.dog1Name)
           const responseID = response.body.id
-          cy.request('DELETE', petStoreURL + responseID, {}).then(
+          cy.request({
+              method: 'DELETE',
+              url: petStoreURL + responseID,
+              body: {}
+            }).then(
         (updatedResponse) => {
             expect(updatedResponse.status).to.eq(200)
             expect(updatedResponse.body).to.have.property('message', responseID.toString())
