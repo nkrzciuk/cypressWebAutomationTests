@@ -13,5 +13,10 @@
   "region": "Mazowieckie",
   "postCode": "05-510",
   "city": "Big City",
-  "successfullOrderMsg": " Your Order Has Been Processed!"
+  "successfullOrderMsg": " Your Order Has Been Processed!",
+  "dog1Name": "Owczarek Niemiecki",
+  "dog2Name": "BorderCollie",
+  "dogID": 23456,
+  "petQuantity": 2,
+  "orderID": 8
 }
