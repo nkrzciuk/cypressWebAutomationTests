@@ -11,7 +11,7 @@ this.beforeAll(() => {
 })
 
 function addPetToTheStore (dogName, idNo) {
-    cy.request('POST', "https://petstore.swagger.io/v2/pet/" , { name: testData.dog1Name, "photoUrls": [
+    cy.request('POST', "https://petstore.swagger.io/v2/pet/" , { name: dogName, "photoUrls": [
         "imageURL"], id: idNo}).then(
         (response) => {
           expect(response.status).to.eq(200)
