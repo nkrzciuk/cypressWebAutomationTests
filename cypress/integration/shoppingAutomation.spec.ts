@@ -1,4 +1,3 @@
-import { func } from "assert-plus"
 import {shopping} from "../support/page_object/shoppingPage"
 
 describe('Shopping Page automation', function() {
@@ -17,7 +16,7 @@ this.beforeAll(() => {
     })
 })
 
-function chooseCategoryAndAddItemToCart (category, items, position) {
+function chooseCategoryAndAddItemToCart (category:string, items:string, position:number) {
     cy.get(shopping.navMenu).contains(category).click()
     cy.contains(items, {force: true}).click({force: true})
     cy.get(shopping.sortItems).select("Date New > Old")
@@ -42,7 +41,7 @@ function chooseCategoryAndAddItemToCart (category, items, position) {
     })
 }
 
-function searchForTheProductAndAddItemToCart (productName) {
+function searchForTheProductAndAddItemToCart (productName:string) {
     cy.get(shopping.searchInput).type(productName)
     .type('{enter}')
     cy.get(shopping.productCart).first().invoke('text').then( itemText => {
@@ -62,7 +61,8 @@ function searchForTheProductAndAddItemToCart (productName) {
 })
 }
 
-function fillClientDataToCompleteOrder (name, lastname, email, address, country, region, city, postCode) {
+function fillClientDataToCompleteOrder (name:string, lastname:string, email:string,
+     address:string, country:string, region:string, city:string, postCode:string) {
     cy.get(shopping.clientName).type(name)
     cy.get(shopping.clientLastName).type(lastname)
     cy.get(shopping.clientEmail).type(email)
@@ -73,7 +73,8 @@ function fillClientDataToCompleteOrder (name, lastname, email, address, country,
     cy.get(shopping.zipCode).type(postCode)
 }
 
-function checkIfDataIsValidated (name, lastname, email, address, city, postCode) {
+function checkIfDataIsValidated (name:string, lastname:string, email:string, address:string,
+     city:string, postCode:string) {
     cy.get(shopping.clientName).type(name)
     cy.get(shopping.clientLastName).type(lastname)
     cy.get(shopping.clientEmail).type(email)

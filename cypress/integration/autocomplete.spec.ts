@@ -1,7 +1,7 @@
 import {autocompleteElements} from "../support/page_object/autocompletePage"
 
 describe('Autocomplete field - automation', function() {
-    let testData;
+    let testData: { autocompleteValue: string; };
 
 this.beforeAll(() => {
     cy.visit('/Autocomplete-TextField/autocomplete-textfield.html')

@@ -10,7 +10,7 @@ this.beforeAll(() => {
     })
 })
 
-function addPetToTheStore (dogName, idNo) {
+function addPetToTheStore (dogName : string, idNo: number) {
     cy.request({
         method: 'POST',
         url: 'https://petstore.swagger.io/v2/pet/',
