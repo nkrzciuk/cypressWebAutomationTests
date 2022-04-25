@@ -9,7 +9,8 @@ this.beforeAll(() => {
     })
 })
 
-function createUser (username, firstName, lastName, email, password, phone, userStatus) {
+function createUser (username:string, firstName:string, lastName:string, email:string,
+     password:string, phone:string, userStatus:number) {
     cy.request({
         method: 'POST',
         url: userURL + "createWithArray",

@@ -1,16 +1,16 @@
 import {dropDownElements} from "../support/page_object/dropdownPage"
 
 describe('DROPDOWN, CHECKBOXE(S) & RADIO BUTTON(S) - automation', function() {
-    const firstDropdown = ['JAVA', 'C#', 'Python', 'SQL']
-    const secondDropdown = ['Eclipse', 'Maven', 'TestNG', 'JUnit']
-    const thirdDropdown = ['HTML', 'CSS', 'JavaScript', 'JQuery']
-    const radioButtonsValues = ['green', 'blue', 'yellow', 'orange', 'purple']
+    const firstDropdown : string[] = ['JAVA', 'C#', 'Python', 'SQL']
+    const secondDropdown : string[] = ['Eclipse', 'Maven', 'TestNG', 'JUnit']
+    const thirdDropdown : string[] = ['HTML', 'CSS', 'JavaScript', 'JQuery']
+    const radioButtonsValues : string[] = ['green', 'blue', 'yellow', 'orange', 'purple']
 
 this.beforeAll(() => {
     cy.visit('/Dropdown-Checkboxes-RadioButtons/index.html')
 })
 
-function compareActualValuesWithTestData(selectedDropdown, selectedList, numberOfValues) {
+function compareActualValuesWithTestData(selectedDropdown : string, selectedList:string[], numberOfValues : number) {
     cy.get(selectedDropdown).children().should('have.length', numberOfValues)
     cy.get(selectedDropdown).children()
    .each(($option, i) => {
@@ -18,7 +18,7 @@ function compareActualValuesWithTestData(selectedDropdown, selectedList, numberO
    });
 }
 
-   function checkIfOptionIsSelectedCorrectly(selectedList, selectedDropdown) {
+   function checkIfOptionIsSelectedCorrectly(selectedList:string[], selectedDropdown:string) {
     selectedList.forEach((option) => {
         cy.get(selectedDropdown)
         .select(option)

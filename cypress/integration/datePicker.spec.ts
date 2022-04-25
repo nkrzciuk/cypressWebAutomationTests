@@ -7,11 +7,11 @@ beforeEach(() => {
 })
 
 it ('Pick date and check if it is correct', function(){
-    const date = new Date()
+    const date : Date = new Date()
     date.setDate(date.getDate() + 15)
-    const futureDay = date.getDate()
-    const futureMonth = date.toLocaleString('default', { month: 'long' });
-    const displayedDate = ('0'+date.toLocaleString('default', { month: 'numeric' })).slice(-2) + "-"
+    const futureDay: number = date.getDate()
+    const futureMonth : string = date.toLocaleString('default', { month: 'long' });
+    const displayedDate : string = ('0'+date.toLocaleString('default', { month: 'numeric' })).slice(-2) + "-"
      + ("0" + futureDay).slice(-2) + "-" + date.getFullYear()
 
     cy.get(dateElements.datePickerField).find('input').then( input => {
